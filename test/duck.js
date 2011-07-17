@@ -45,3 +45,8 @@ exports.single = function () {
     var obj = { 0 : 'a' };
     assert.deepEqual(quack(obj), [ 'a' ]);
 };
+
+exports.isArray = function () {
+    var obj = [ 'a', 'b', 'c' ];
+    assert.equal(quack(obj), obj);
+};
