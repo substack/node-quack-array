@@ -40,3 +40,8 @@ exports.empty = function () {
     var obj = {};
     assert.equal(quack(obj), obj);
 };
+
+exports.single = function () {
+    var obj = { 0 : 'a' };
+    assert.deepEqual(quack(obj), [ 'a' ]);
+};
