@@ -9,10 +9,10 @@
         "test" : "test"
     },
     "dependencies" : {
-        "es5-shim" : "0.4.x"
+        "traverse" : "0.4.x"
     },
     "devDependencies" : {
-        "expresso" : "0.7.x",
+        "expresso" : "0.7.x"
     },
     "repository" : {
         "type" : "git",
