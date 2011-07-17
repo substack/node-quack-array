@@ -2,6 +2,7 @@ var traverse = require('traverse');
 
 var quack = module.exports = function (obj) {
     if (typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) return obj;
     
     if (!obj.hasOwnProperty('0')) return obj;
     var keys = Object.keys(obj);
