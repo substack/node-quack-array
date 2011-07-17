@@ -35,3 +35,8 @@ exports.indexOffset = function () {
     var obj = { 1 : 'a', 2 : 'b', 3 : 'c' };
     assert.equal(quack(obj), obj);
 };
+
+exports.empty = function () {
+    var obj = {};
+    assert.equal(quack(obj), obj);
+};
