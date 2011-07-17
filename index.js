@@ -1,6 +1,8 @@
 var traverse = require('traverse');
 
 var quack = module.exports = function (obj) {
+    if (typeof obj !== 'object') return obj;
+    
     var keys = Object.keys(obj);
     if (keys.every(function (key) {
         return key.match(/^\d+$/);
@@ -11,8 +13,6 @@ var quack = module.exports = function (obj) {
     else return obj;
 };
 
-quack.deep = function () {
-    return traverse.map(function (node) {
-        return quack(node);
-    });
+quack.deep = function (obj) {
+    return traverse(obj).map(quack);
 };
