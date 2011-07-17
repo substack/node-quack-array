@@ -1,6 +1,6 @@
 var traverse = require('traverse');
 
-var arrayify = module.exports = function (obj) {
+var quack = module.exports = function (obj) {
     var keys = Object.keys(obj);
     if (keys.every(function (key) {
         return key.match(/^\d+$/);
@@ -11,8 +11,8 @@ var arrayify = module.exports = function (obj) {
     else return obj;
 };
 
-arrayify.deep = function () {
+quack.deep = function () {
     return traverse.map(function (node) {
-        return arrayify(node);
+        return quack(node);
     });
 };
