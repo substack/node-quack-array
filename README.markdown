@@ -5,6 +5,8 @@ Does it quack like an array?
 
 If so, turn an object into one!
 
+![quack!](http://substack.net/images/quacks_like_a_duck.png)
+
 examples
 ========
 
