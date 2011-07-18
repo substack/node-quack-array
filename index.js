@@ -4,25 +4,17 @@ var quack = module.exports = function (obj) {
     if (typeof obj !== 'object') return obj;
     if (Array.isArray(obj)) return obj;
     
-    if (!obj.hasOwnProperty('0')) return obj;
-    var keys = Object.keys(obj);
+    var keys = Object.keys(obj)
+        .filter(function (x) { return x !== 'length' })
+    ;
     if (keys.length === 0) return obj;
     
     var allNumbers = keys.every(function (key) {
-        return key.match(/^\d+$/);
+        return !isNaN(key) && parseInt(key, 10) == key && key >= 0;
     });
     if (!allNumbers) return obj;
     
-    var max = Math.max.apply(null, keys);
-    
-    for (var i = 0; i < keys.length; i++) {
-        var key = parseInt(keys[i], 10);
-        if (key !== max && !obj.hasOwnProperty(key+1)) {
-            return obj; // not contiguous
-        }
-    }
-    
-    obj.length = keys.length;
+    obj.length = Math.max.apply(null, keys) + 1;
     return [].slice.call(obj);
 };
 
