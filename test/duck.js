@@ -28,12 +28,18 @@ exports.deep = function () {
 
 exports.discontiguous = function () {
     var obj = { 0 : 'a', 2 : 'b' };
-    assert.deepEqual(quack(obj), [ 'a', null, 'b' ]);
+    assert.deepEqual(
+        JSON.stringify(quack(obj)),
+        JSON.stringify([ 'a', null, 'b' ])
+    );
 };
 
 exports.indexOffset = function () {
     var obj = { 1 : 'a', 2 : 'b', 3 : 'c' };
-    assert.deepEqual(quack(obj), [ null, 'a', 'b', 'c' ]);
+    assert.equal(
+        JSON.stringify(quack(obj)),
+        JSON.stringify([ null, 'a', 'b', 'c' ])
+    );
 };
 
 exports.empty = function () {

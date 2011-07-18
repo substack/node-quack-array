@@ -38,8 +38,7 @@ Otherwise return `obj`.
 Arrays have:
 
 * one or more elements
-* keys that all .match(/^\d+$/) and are contiguous
-* a first index at 0
+* all enumerable keys are `>= 0`, integers, or 'length'
 
 quack.deep(obj)
 ---------------
