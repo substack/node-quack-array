@@ -28,12 +28,12 @@ exports.deep = function () {
 
 exports.discontiguous = function () {
     var obj = { 0 : 'a', 2 : 'b' };
-    assert.equal(quack(obj), obj);
+    assert.deepEqual(quack(obj), [ 'a', null, 'b' ]);
 };
 
 exports.indexOffset = function () {
     var obj = { 1 : 'a', 2 : 'b', 3 : 'c' };
-    assert.equal(quack(obj), obj);
+    assert.deepEqual(quack(obj), [ null, 'a', 'b', 'c' ]);
 };
 
 exports.empty = function () {
@@ -49,4 +49,9 @@ exports.single = function () {
 exports.isArray = function () {
     var obj = [ 'a', 'b', 'c' ];
     assert.equal(quack(obj), obj);
+};
+
+exports.enumLen = function () {
+    var obj = { 0 : 'a', 1 : 'b', length : 2 };
+    assert.deepEqual(quack(obj), [ 'a', 'b' ]);
 };
