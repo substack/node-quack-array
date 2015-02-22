@@ -3,7 +3,7 @@ var assert = require('assert');
 
 exports.shallow = function () {
     assert.deepEqual(quack({ 0 : 'a', 1 : 'b' }), [ 'a', 'b' ]);
-    
+
     var obj = { 0 : 'a', 1 : 'b', x : 'c' };
     assert.equal(quack(obj), obj);
 };
@@ -16,7 +16,7 @@ exports.deep = function () {
         }),
         [ [ 'a', 'b', 'c' ], 'd' ]
     );
-    
+
     assert.deepEqual(
         quack.deep({
             0 : { 0 : 'a', 1 : 'b', 2 : 'c' },
@@ -60,4 +60,11 @@ exports.isArray = function () {
 exports.enumLen = function () {
     var obj = { 0 : 'a', 1 : 'b', length : 2 };
     assert.deepEqual(quack(obj), [ 'a', 'b' ]);
+};
+
+exports.stringKeys = function () {
+    assert.deepEqual(quack({ '0' : 'a', '1' : 'b' }), [ 'a', 'b' ]);
+
+    var obj = { 0 : 'a', 1 : 'b', x : 'c' };
+    assert.equal(quack(obj), obj);
 };
